@@ -86,6 +86,7 @@
       pkgs.neovim
       pkgs.rustup
       pkgs.vscode
+      pkgs.wayland
       pkgs.wget
       pkgs.xclip
     ];

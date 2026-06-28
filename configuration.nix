@@ -83,6 +83,7 @@
       pkgs.github-cli
       pkgs.kdePackages.kate
       pkgs.kdePackages.wayland
+      pkgs.mesa
       pkgs.neovim
       pkgs.rustup
       pkgs.vscode

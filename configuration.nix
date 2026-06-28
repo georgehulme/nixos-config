@@ -87,6 +87,7 @@
       pkgs.rustup
       pkgs.vscode
       pkgs.wget
+      pkgs.xclip
     ];
   };
 

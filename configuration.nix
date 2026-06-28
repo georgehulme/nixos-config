@@ -85,6 +85,7 @@
       pkgs.kdePackages.wayland
       pkgs.neovim
       pkgs.rustup
+      pkgs.vscode
       pkgs.wget
     ];
   };

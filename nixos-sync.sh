@@ -14,11 +14,13 @@ save_configs() {
         
         if [ -f "$target_file" ]; then
             cp "$target_file" "./$local_file"
+	    git add "./$local_file"
             echo "Saved $target_file => ./$local_file"
         else
             echo "Warning: $target_file does not exist. Skipping."
         fi
     done
+    git commit -m "NixOS Backup: $(date)"
 }
 
 load_configs() {

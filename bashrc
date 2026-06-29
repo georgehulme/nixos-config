@@ -1,0 +1,2 @@
+# Source profile
+. "$HOME/.profile"

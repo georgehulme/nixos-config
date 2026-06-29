@@ -86,6 +86,7 @@
       pkgs.kdePackages.wayland
       pkgs.mesa
       pkgs.rustup
+      pkgs.sccache
       pkgs.vscode
       pkgs.wayland
       pkgs.wget

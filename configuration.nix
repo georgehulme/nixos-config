@@ -76,6 +76,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     # User packages
     packages = [
+      pkgs.direnv
       pkgs.discord
       pkgs.gcc
       pkgs.ghostty

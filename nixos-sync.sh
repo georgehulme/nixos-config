@@ -7,6 +7,7 @@ declare -A CONFIG_FILES=(
     ["flake.lock"]="/etc/nixos/flake.lock"
     ["profile"]="/home/george/.profile"
     ["bashrc"]="/home/george/.bashrc"
+    ["cargo/config.toml"]="/home/george/.cargo/config.toml"
 )
 
 save_configs() {
@@ -15,6 +16,7 @@ save_configs() {
         target_file="${CONFIG_FILES[$local_file]}"
         
         if [ -f "$target_file" ]; then
+	    mkdir -p "$(dirname "$local_file")"
             cp "$target_file" "./$local_file"
 	    git add "./$local_file"
             echo "Saved $target_file => ./$local_file"
@@ -68,6 +70,10 @@ case "$1" in
     load)
         load_configs
         ;;
+    sync)
+	load_configs
+	save_configs
+	;;
     *)
         echo "Usage: $0 {save|load}"
         exit 1

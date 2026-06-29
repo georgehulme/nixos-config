@@ -5,7 +5,8 @@ declare -A CONFIG_FILES=(
     ["hardware-configuration.nix"]="/etc/nixos/hardware-configuration.nix"
     ["flake.nix"]="/etc/nixos/flake.nix"
     ["flake.lock"]="/etc/nixos/flake.lock"
-    ["nix-profile"]="/home/george/.nix-profile"
+    ["profile"]="/home/george/.profile"
+    ["bashrc"]="/home/george/.bashrc"
 )
 
 save_configs() {

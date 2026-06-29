@@ -85,7 +85,6 @@
       pkgs.kdePackages.kate
       pkgs.kdePackages.wayland
       pkgs.mesa
-      pkgs.neovim
       pkgs.rustup
       pkgs.vscode
       pkgs.wayland
@@ -110,6 +109,8 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.gnupg.agent.enable = true;
+  programs.neovim.enable = true;
+  programs.tmux.enable = true;
 
   # System packages
   environment.systemPackages = [ ];

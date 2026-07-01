@@ -96,6 +96,7 @@
   };
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "btrfs";
 
   # Setup passwordless sudo
   security.sudo.extraRules = [

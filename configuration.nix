@@ -73,7 +73,7 @@
   users.users."george" = {
     isNormalUser = true;
     description = "George Hulme";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "docker" "networkmanager" "wheel" ];
     # User packages
     packages = [
       pkgs.direnv

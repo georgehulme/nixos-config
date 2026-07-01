@@ -78,6 +78,7 @@
     packages = [
       pkgs.direnv
       pkgs.discord
+      pkgs.docker
       pkgs.gcc
       pkgs.ghostty
       pkgs.git
@@ -93,6 +94,8 @@
       pkgs.xclip
     ];
   };
+
+  virtualisation.docker.enable = true;
 
   # Setup passwordless sudo
   security.sudo.extraRules = [
@@ -110,11 +113,14 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.gnupg.agent.enable = true;
+  programs.gpu-screen-recorder.enable = true;
   programs.neovim.enable = true;
   programs.tmux.enable = true;
 
   # System packages
-  environment.systemPackages = [ ];
+  environment.systemPackages = [
+    pkgs.gpu-screen-recorder-gtk
+  ];
 
   environment.shellAliases = {
     rebuild-system = "sudo nixos-rebuild switch --flake /etc/nixos";

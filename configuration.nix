@@ -116,6 +116,7 @@
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     # User packages
     packages = [
+      pkgs.google-chrome
       pkgs.direnv
       pkgs.discord
       pkgs.docker

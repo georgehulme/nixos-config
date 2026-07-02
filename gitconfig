@@ -1,0 +1,12 @@
+[user]
+	name = George Hulme
+	email = george@crown-shy.com
+[core]
+	editor = nvim
+[gpg]
+	signingkey = 1336EFE416D0D0CF919FF650AFEE9B60134C05E9
+[commit]
+	gpgsign = true
+[includeIf "gitdir:/home/george/Projects/hobby/"]
+	Path = .gitconfig-personal
+

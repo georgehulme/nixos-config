@@ -1,0 +1,7 @@
+[user]
+	email = georgehulme2@gmail.com
+[gpg]
+	signingkey = 
+[commit]
+	gpgsign = false
+

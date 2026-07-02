@@ -8,6 +8,9 @@ declare -A CONFIG_FILES=(
     ["profile"]="/home/george/.profile"
     ["bashrc"]="/home/george/.bashrc"
     ["cargo/config.toml"]="/home/george/.cargo/config.toml"
+    ["gitconfig"]="/home/george/.gitconfig"
+    ["gitconfig-personal"]="/home/george/.gitconfig-personal"
+    ["ssh/config"]="/home/george/.ssh/config"
 )
 
 save_configs() {
@@ -48,6 +51,7 @@ load_configs() {
         read -p "Overwrite $target_file with ./$local_file? [y/N] " -n 1 -r
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
+	    mkdir -p "$(dirname "$local_file")"
             # Automatically use sudo if the destination isn't writable by the user
             if [ -w "$(dirname "$target_file")" ] && { [ ! -e "$target_file" ] || [ -w "$target_file" ]; }; then
                 cp "./$local_file" "$target_file"

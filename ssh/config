@@ -1,0 +1,11 @@
+Host *
+  # Always only use specified identities, do not fall back to
+  # everything found in ssh-agent.
+  IdentitiesOnly yes
+
+Match host github.com exec "pwd | grep -qE '^%d/Projects/hobby(/.*)?$'"
+  IdentityFile ~/.ssh/id_ed25519
+
+Match host github.com exec "pwd | grep -qE '^%d/Projects/work(/.*)?$'"
+  IdentityFile ~/.ssh/id_ed25519_crownshy
+

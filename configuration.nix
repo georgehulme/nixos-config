@@ -128,10 +128,20 @@
   programs.tmux.enable = true;
 
   # System packages
-  environment.systemPackages = [
+  environment.systemPackages =
+    let
+      zen-browser = import (builtins.fetchTarball {
+        url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
+	sha256 = "sha256:17fwqzsrnvkyzazgs33x2bjs77270j4rjw32p6wksr9y3zx4ra8z";
+      }) {
+        inherit pkgs;
+      };
+    in
+  [
     pkgs.gpu-screen-recorder-gtk
+    zen-browser.default
   ];
-
+  
   environment.shellAliases = {
     rebuild-system = "sudo nixos-rebuild switch --flake /etc/nixos";
     update-system = "sudo nix flake update /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos";

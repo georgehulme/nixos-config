@@ -81,22 +81,25 @@
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     # User packages
     packages = [
-      pkgs.google-chrome
-      pkgs.direnv
       pkgs.discord
       pkgs.docker
       pkgs.gcc
       pkgs.ghostty
       pkgs.git
       pkgs.github-cli
+      pkgs.google-chrome
+      pkgs.direnv
       pkgs.kdePackages.kate
       pkgs.kdePackages.wayland
       pkgs.mesa
+      pkgs.nordpass
+      pkgs.ripgrep
       pkgs.rustup
       pkgs.sccache
       pkgs.vscode
       pkgs.wayland
       pkgs.wget
+      pkgs.wgnord
       pkgs.xclip
     ];
   };

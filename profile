@@ -12,3 +12,7 @@ export SCCACHE_CACHE_SIZE="5G"
 ## Set cache directory
 export SCCACHE_DIR="$HOME/.sccache/"
 
+# Setup editor env
+export EDITOR="nvim"
+export FCEDIT="$EDITOR"
+

@@ -80,27 +80,30 @@
     description = "George Hulme";
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     # User packages
-    packages = [
-      pkgs.discord
-      pkgs.docker
-      pkgs.gcc
-      pkgs.ghostty
-      pkgs.git
-      pkgs.github-cli
-      pkgs.google-chrome
-      pkgs.direnv
-      pkgs.kdePackages.kate
-      pkgs.kdePackages.wayland
-      pkgs.mesa
-      pkgs.nordpass
-      pkgs.ripgrep
-      pkgs.rustup
-      pkgs.sccache
-      pkgs.vscode
-      pkgs.wayland
-      pkgs.wget
-      pkgs.wgnord
-      pkgs.xclip
+    packages = with pkgs; [
+      discord
+      direnv
+      docker
+      gcc
+      ghostty
+      git
+      github-cli
+      google-chrome
+      haruna
+      kdePackages.kate
+      kdePackages.wayland
+      mesa
+      nordpass
+      obsidian
+      ripgrep
+      rustup
+      sccache
+      vscode
+      wayland
+      wget
+      wgnord
+      xclip
+
     ];
   };
 
@@ -120,11 +123,38 @@
     }
   ];
 
-  # Install firefox.
-  programs.firefox.enable = true;
   programs.gnupg.agent.enable = true;
   programs.gpu-screen-recorder.enable = true;
   programs.neovim.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # Headless browser dependencies
+      atk
+      cairo
+      dbus
+      fontconfig
+      gcc
+      gio-sharp
+      glib
+      gtk3
+      libx11
+      libxcb
+      libxcomposite
+      libxcursor
+      libxdamage
+      libxext
+      libxfixes
+      libxrandr
+      libxrender
+      libxft
+      libxi
+      nspr
+      nss
+      pango
+      rubyPackages.gdk3
+    ];
+  };
   programs.tmux.enable = true;
 
   # System packages

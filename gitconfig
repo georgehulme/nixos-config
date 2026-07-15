@@ -3,6 +3,7 @@
 	email = george@crown-shy.com
 [core]
 	editor = nvim
+	sshCommand = ssh -i ~/.ssh/id_ed25519_crownshy
 [gpg]
 	signingkey = 1336EFE416D0D0CF919FF650AFEE9B60134C05E9
 [commit]

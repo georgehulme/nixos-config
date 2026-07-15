@@ -93,6 +93,7 @@
       kdePackages.kate
       kdePackages.wayland
       mesa
+      mold
       nordpass
       obsidian
       ripgrep
@@ -103,7 +104,6 @@
       wget
       wgnord
       xclip
-
     ];
   };
 
@@ -133,11 +133,13 @@
       atk
       cairo
       dbus
+      expat
       fontconfig
       gcc
       gio-sharp
       glib
       gtk3
+      libgbm
       libx11
       libxcb
       libxcomposite
@@ -145,6 +147,7 @@
       libxdamage
       libxext
       libxfixes
+      libxkbcommon
       libxrandr
       libxrender
       libxft
@@ -157,25 +160,31 @@
   };
   programs.tmux.enable = true;
 
-  # System packages
-  environment.systemPackages =
-    let
-      zen-browser = import (builtins.fetchTarball {
-        url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
-	sha256 = "sha256:17fwqzsrnvkyzazgs33x2bjs77270j4rjw32p6wksr9y3zx4ra8z";
-      }) {
-        inherit pkgs;
-      };
-    in
-  [
-    pkgs.gpu-screen-recorder-gtk
-    zen-browser.default
-  ];
-  
-  environment.shellAliases = {
-    rebuild-system = "sudo nixos-rebuild switch --flake /etc/nixos";
-    update-system = "sudo nix flake update /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos";
+  environment = {
+    sessionVariables = {
+      PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
+    };
+    shellAliases = {
+      rebuild-system = "sudo nixos-rebuild switch --flake /etc/nixos";
+      update-system = "sudo nix flake update /etc/nixos && sudo nixos-rebuild switch --flake /etc/nixos";
+    };
+    systemPackages =
+      let
+        zen-browser = import (builtins.fetchTarball {
+          url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
+          sha256 = "sha256:17fwqzsrnvkyzazgs33x2bjs77270j4rjw32p6wksr9y3zx4ra8z";
+        }) {
+          inherit pkgs;
+        };
+      in
+    [
+      pkgs.gpu-screen-recorder-gtk
+      pkgs.playwright-driver.browsers
+      zen-browser.default
+    ];
   };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

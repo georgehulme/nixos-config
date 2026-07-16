@@ -81,6 +81,7 @@
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     # User packages
     packages = with pkgs; [
+      awscli
       discord
       direnv
       docker

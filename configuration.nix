@@ -82,6 +82,7 @@
     # User packages
     packages = with pkgs; [
       awscli
+      clang
       discord
       direnv
       docker
@@ -185,7 +186,13 @@
       zen-browser.default
     ];
   };
-
+  
+  system.activationScripts.usrbin-symlinks = ''
+    mkdir -p /usr/bin
+    ln -sfn ${pkgs.clang}/bin/clang /usr/bin/clang
+    ln -sfn ${pkgs.mold}/bin/mold /usr/bin/mold
+  '';
+  
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

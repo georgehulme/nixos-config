@@ -3,7 +3,7 @@
 [core]
         sshCommand = ssh -i ~/.ssh/id_ed25519
 [gpg]
-	signingkey = 
+	signingkey = 173359452F6E2D7D61C6BC0461486C4067CC7AB8
 [commit]
 	gpgsign = false
 

@@ -85,6 +85,7 @@
       bottles
       clang
       cups
+      cups-filters
       discord
       direnv
       docker

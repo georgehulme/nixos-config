@@ -84,6 +84,7 @@
       awscli
       bottles
       clang
+      cups
       discord
       direnv
       docker

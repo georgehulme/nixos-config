@@ -162,6 +162,9 @@
       rubyPackages.gdk3
     ];
   };
+  programs.steam = {
+     enable = true;
+  };
   programs.tmux.enable = true;
 
   environment = {

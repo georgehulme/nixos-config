@@ -82,6 +82,7 @@
     # User packages
     packages = with pkgs; [
       awscli
+      bottles
       clang
       discord
       direnv

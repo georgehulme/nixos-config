@@ -101,6 +101,7 @@
       ripgrep
       rustup
       sccache
+      unrar
       vscode
       wayland
       wget

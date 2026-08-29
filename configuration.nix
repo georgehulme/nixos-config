@@ -105,6 +105,7 @@
       rustup
       sccache
       unrar
+      unzip
       vscode
       wayland
       wget

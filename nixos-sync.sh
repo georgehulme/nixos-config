@@ -13,25 +13,37 @@ declare -A CONFIG_FILES=(
     ["ssh/config"]="/home/george/.ssh/config"
 )
 
+declare -A CONFIG_DIRECTORIES=(
+    ["config/nvim"]="/home/george/.config/nvim"
+)
+
 save_configs() {
-    echo "Saving configs to current directory..."
     for local_file in "${!CONFIG_FILES[@]}"; do
         target_file="${CONFIG_FILES[$local_file]}"
         
         if [ -f "$target_file" ]; then
-	    mkdir -p "$(dirname "$local_file")"
-            cp "$target_file" "./$local_file"
-	    git add "./$local_file"
-            echo "Saved $target_file => ./$local_file"
+            mkdir -p "$(dirname "${local_file}")"
+            cp "$target_file" "./${local_file}"
+            git add "$(realpath "./${local_file}")"
         else
             echo "Warning: $target_file does not exist. Skipping."
+        fi
+    done
+    for local_dir in "${!CONFIG_DIRECTORIES[@]}"; do
+        target_dir="${CONFIG_DIRECTORIES[$local_dir]}"
+        
+        if [ -d "${target_dir}" ]; then
+            mkdir -p "$(dirname "${local_dir}")"
+            cp -r "${target_dir}" "${local_dir}"
+            git add "$(realpath "${local_dir}")"
+        else
+            echo "Warning: ${target_dir} does not exist. Skipping."
         fi
     done
     git commit -m "NixOS Backup: $(date)"
 }
 
 load_configs() {
-    echo "Loading configs from current directory..."
     for local_file in "${!CONFIG_FILES[@]}"; do
         target_file="${CONFIG_FILES[$local_file]}"
         
@@ -59,9 +71,6 @@ load_configs() {
                 echo "Requires elevated permissions..."
                 sudo cp "./$local_file" "$target_file"
             fi
-            echo "Copied ./$local_file => $target_file"
-        else
-            echo "Skipped $local_file."
         fi
     done
 }
